@@ -7,7 +7,7 @@ from . import models
 
 
 def index(request):
-    article = models.Article.objects.get(pk=2)
+    article = models.Article.objects.get(pk=3)
     return render(request, 'testApp/index.html', {'article': article})
 
 # def index(request):
