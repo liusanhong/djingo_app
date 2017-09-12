@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>First HTML</title>
+    <title>LQ Blog</title>
 </head>
 <body>
-    <h2>author : {{ article.title }}</h2>
-    <h3>content:  {{ article.content }}</h3>
+    <h2>LQ Blog</h2>
+    {% for article in articles %}
+{#        <a href="article/{{ article.id }}">{{ article.title }}</a>#}
+        <a href="{% url 'index:article_page' article.id%}">{{ article.title }}</a>
+
+        <br />
+    {% endfor %}
+    <br />
+    <br />
+    <a href="{% url 'index:article_edit_page' %}">新建</a>
+
 </body>
 </html>
