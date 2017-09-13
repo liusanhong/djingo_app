@@ -7,14 +7,27 @@
 <body>
 <form action="{% url 'index:article_edit_page_action' %}" method="post">
     {% csrf_token %}
-    <label>博客标题
-        <input type="text" name="title"/>
-    </label>
-    <br />
-    <label>博客内容
-        <input type="text" name="content"/>
-    </label>
-    <br />
+
+    {% if article %}
+        <input type="hidden" name="article_id_hidden" value="{{ article.id }}"/>
+        <label>博客标题
+            <input type="text" name="title" value="{{ article.title }}"/>
+        </label>
+        <br/>
+        <label>博客内容
+            <input type="text" name="content" value="{{ article.content }}"/>
+        </label>
+    {% else %}
+        <input type="hidden" name="article_id_hidden" value="0"/>
+        <label>博客标题
+            <input type="text" name="title"/>
+        </label>
+        <br/>
+        <label>博客内容
+            <input type="text" name="content"/>
+        </label>
+    {% endif %}
+    <br/>
 
     <input type="submit" value="保存"/>
 </form>
